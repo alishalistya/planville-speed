@@ -125,3 +125,27 @@ export type AnalysisEvent =
   | AnalysisResultEvent
   | AnalysisCompleteEvent
   | AnalysisErrorEvent;
+
+export interface QuickCheckScores {
+  performance: number;
+  seo: number;
+  accessibility: number;
+  bestPractices: number;
+}
+
+export interface QuickCheckCWV {
+  lcp: number;
+  fcp: number;
+  cls: number;
+  tbt: number;
+  si: number;
+  ttfb: number;
+}
+
+export interface QuickCheckResult {
+  url: string;
+  strategy: Strategy;
+  fetchedAt: string;
+  scores: QuickCheckScores;
+  coreWebVitals: QuickCheckCWV;
+}

@@ -21,6 +21,7 @@ import ScoreDistribution from "@/components/dashboard/ScoreDistribution";
 import WorstPages from "@/components/dashboard/WorstPages";
 import PageTable from "@/components/dashboard/PageTable";
 import GlobalRecommendations from "@/components/recommendations/GlobalRecommendations";
+import QuickCheckPanel from "@/components/dashboard/QuickCheckPanel";
 import {
   Zap,
   Play,
@@ -173,6 +174,7 @@ export default function Dashboard() {
             </div>
 
             <div className="flex items-center gap-3">
+              <QuickCheckPanel strategy={strategy} />
               <StrategyToggle
                 strategy={strategy}
                 onChange={handleStrategyChange}

@@ -5,9 +5,7 @@ import {
   Shield,
   Thermometer,
   Paintbrush,
-  Smartphone,
   ChevronDown,
-  ChevronRight,
   Phone,
   Mail,
   MapPin,
@@ -15,334 +13,215 @@ import {
   CheckCircle,
   ArrowRight,
   Clock,
-  Volume2,
   Lock,
   Sun,
-  Fingerprint,
-  Settings,
   Award,
   DoorOpen,
   Sparkles,
   BadgeCheck,
   CircleDollarSign,
-  HandHelping,
   ClipboardCheck,
   Package,
   HardHat,
   HeartHandshake,
-  Ruler,
   Palette,
-  FileText,
   Home,
   Euro,
+  Menu,
+  X,
+  Send,
+  Fingerprint,
+  FileText,
+  Eye,
+  ShieldCheck,
+  Handshake,
+  XCircle,
+  Wrench,
+  Zap,
 } from "lucide-react";
 
-/* ─────────────── TYPES ─────────────── */
+/* ─── TYPES ─── */
 interface FAQItem {
   question: string;
   answer: string;
 }
 
-/* ─────────────── DATA ─────────────── */
-const materials = [
+/* ─── DATA ─── */
+const trustBenefits = [
   {
-    name: "Aluminium",
-    badge: "Beliebteste Wahl",
-    description:
-      "Extrem langlebig, pflegeleicht und in zahlreichen Farben verfügbar. Ideale Wärmedämmung durch thermisch getrennte Profile.",
-    features: [
-      "Witterungsbeständig & rostfrei",
-      "Schmale Profilansichten",
-      "Über 200 RAL-Farben",
-      "Höchste Einbruchsicherheit",
-    ],
-    ud: "bis 0,87 W/(m²·K)",
-    icon: Shield,
+    icon: ShieldCheck,
+    value: "RC2+",
+    title: "Sorgenfrei",
+    text: "Alle Türen mit mindestens RC2-Sicherheitsstandard – für maximalen Einbruchschutz.",
   },
   {
-    name: "Kunststoff",
-    badge: "Preis-Leistung",
-    description:
-      "Hervorragendes Preis-Leistungs-Verhältnis mit guter Wärmedämmung. Pflegeleicht und in vielen Dekoren erhältlich.",
-    features: [
-      "Günstigste Option",
-      "Gute Wärmedämmung",
-      "Pflegeleicht",
-      "Viele Dekore verfügbar",
-    ],
-    ud: "bis 1,0 W/(m²·K)",
-    icon: Euro,
-  },
-  {
-    name: "Holz",
-    badge: "Natürlich",
-    description:
-      "Natürlicher Werkstoff mit hervorragender Wärmedämmung und behaglicher Optik. Nachhaltig und individuell gestaltbar.",
-    features: [
-      "Natürliche Wärmedämmung",
-      "Nachhaltiger Werkstoff",
-      "Behagliche Ausstrahlung",
-      "Individuell gestaltbar",
-    ],
-    ud: "bis 0,90 W/(m²·K)",
-    icon: Sun,
-  },
-  {
-    name: "Holz-Aluminium",
-    badge: "Premium",
-    description:
-      "Das Beste aus beiden Welten: Holz-Wärme innen, Aluminium-Schutz außen. Maximale Langlebigkeit und Ästhetik.",
-    features: [
-      "Holz innen, Alu außen",
-      "Beste Wärmedämmung",
-      "Maximale Langlebigkeit",
-      "Premium-Optik",
-    ],
-    ud: "bis 0,80 W/(m²·K)",
-    icon: Sparkles,
-  },
-];
-
-const benefits = [
-  {
-    icon: Shield,
-    title: "Einbruchschutz",
-    subtitle: "RC2 & RC3 Sicherheit",
-    description:
-      "Mehrfachverriegelung und Sicherheitsbeschläge nach DIN EN 1627. Schütze dein Zuhause mit geprüfter Widerstandsklasse RC2 oder RC3.",
-    stats: "bis RC3",
-  },
-  {
-    icon: Thermometer,
-    title: "Wärmedämmung",
-    subtitle: "Energieeffizienz A+",
-    description:
-      "Dreifachverglasung und thermisch getrennte Profile für beste UD-Werte. Erfüllt die Anforderungen des Gebäudeenergiegesetzes (GEG).",
-    stats: "UD 0,80",
-  },
-  {
-    icon: Paintbrush,
-    title: "Design",
-    subtitle: "Über 200 RAL-Farben",
-    description:
-      "Individuelle Gestaltung mit Seitenteilen, Oberlichtern, Glasoptionen und Griffen. Deine Haustür wird zum Blickfang.",
-    stats: "200+ Farben",
-  },
-  {
-    icon: Smartphone,
-    title: "Smart Home",
-    subtitle: "Fingerprint & App",
-    description:
-      "Fingerprint-Scanner, elektronische Türschlösser und App-Steuerung. Komm schlüssellos nach Hause.",
-    stats: "Schlüsselfrei",
-  },
-  {
-    icon: Volume2,
-    title: "Schallschutz",
-    subtitle: "Bis Klasse 3",
-    description:
-      "Optimierte Dichtungssysteme und Spezialverglasungen reduzieren Außenlärm effektiv. Genieße Ruhe in deinem Zuhause.",
-    stats: "bis 42 dB",
+    icon: Package,
+    value: "All-Inclusive",
+    title: "Alles-inklusive Beratung",
+    text: "Beratung, Aufmaß, Fertigung und Montage – ein Ansprechpartner für alles.",
   },
   {
     icon: Lock,
-    title: "Barrierefreiheit",
-    subtitle: "Nullschwelle möglich",
-    description:
-      "Bodenebene Schwellen für barrierefreien Zugang nach DIN 18040. Komfortabel und zukunftssicher für jedes Alter.",
-    stats: "DIN 18040",
+    value: "10 Jahre",
+    title: "Sichern und umfassend",
+    text: "Langfristige Garantie und umfassender Service auch nach der Montage.",
   },
 ];
 
-const doorModels = [
+const whyPlanville = [
   {
-    name: "Die Tür – Kompakt",
-    description: "Aluminium-Haustür im kompakten Format",
-    features: ["Aluminium", "Standardmaße", "Gute Dämmung"],
-    tag: "Einsteiger",
-  },
-  {
-    name: "Die Tür – Standard",
-    description: "Vielseitige Haustür mit bewährter Qualität",
-    features: ["Aluminium", "Seitenteile möglich", "RC2 Sicherheit"],
-    tag: "Bestseller",
-  },
-  {
-    name: "Die Tür – All Inclusive",
-    description: "Premium-Ausstattung inklusive aller Extras",
-    features: ["Premium Alu", "Smart Home ready", "RC3 Sicherheit"],
-    tag: "Premium",
-  },
-  {
-    name: "Die Tür – Groß Design",
-    description: "Großflächige Designs für moderne Architektur",
-    features: ["XXL-Formate", "Seitenteil & Oberlicht", "Individuelle Maße"],
-    tag: "Exklusiv",
-  },
-  {
-    name: "Fenster – Loft",
-    description: "Loft-Elemente für maximalen Lichteinfall",
-    features: ["Loft-Stil", "Große Glasflächen", "Moderne Optik"],
-    tag: "Modern",
-  },
-  {
-    name: "Nebeneingangstür",
-    description: "Funktionale Tür für Nebeneingang und Keller",
-    features: ["Robust", "Wärmedämmend", "Preiswert"],
-    tag: "Funktional",
-  },
-];
-
-const configuratorSteps = [
-  {
-    step: 1,
-    title: "Modell wählen",
-    description: "Wähle aus unseren Türmodellen dein Wunschdesign.",
-    icon: DoorOpen,
-  },
-  {
-    step: 2,
-    title: "Maße angeben",
-    description: "Gib die exakten Maße deiner Türöffnung ein.",
-    icon: Ruler,
-  },
-  {
-    step: 3,
-    title: "Design anpassen",
-    description: "Farbe, Verglasung, Griffe und Seitenteile konfigurieren.",
-    icon: Palette,
-  },
-  {
-    step: 4,
-    title: "Sicherheit wählen",
-    description: "Wähle deine gewünschte Sicherheitsausstattung.",
     icon: Shield,
+    title: "Absicherung",
+    text: "Alle Arbeiten sind versichert. Bei Schäden übernehmen wir die volle Verantwortung.",
   },
   {
-    step: 5,
-    title: "Angebot erhalten",
-    description: "Erhalte dein individuelles Angebot innerhalb von 24h.",
     icon: FileText,
+    title: "E-Dokumentation",
+    text: "Digitale Dokumentation aller Maße, Konfigurationen und Vereinbarungen.",
+  },
+  {
+    icon: Eye,
+    title: "Voll Transparent",
+    text: "Keine versteckten Kosten. Du erhältst einen detaillierten Kostenvoranschlag vorab.",
+  },
+  {
+    icon: Handshake,
+    title: "Professionelle Beratung",
+    text: "Unsere Fachberater nehmen sich Zeit für deine Wünsche und beraten individuell.",
+  },
+  {
+    icon: Euro,
+    title: "Festpreis Planville",
+    text: "Festpreisgarantie – der vereinbarte Preis gilt. Keine Nachforderungen.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Langfristiger Service",
+    text: "Auch nach der Montage sind wir für dich da – Wartung, Nachjustierung und Support.",
   },
 ];
 
-const testimonials = [
+const comparisonWith = [
+  "Persönlicher Ansprechpartner von Anfang an",
+  "Kostenlose Vor-Ort-Beratung und Aufmaß",
+  "Festpreis ohne versteckte Kosten",
+  "Fachgerechte Montage durch eigene Teams",
+  "10 Jahre Garantie auf Montage",
+  "Förderberatung inklusive",
+];
+
+const comparisonWithout = [
+  "Verschiedene Ansprechpartner und Zuständige",
+  "Aufmaß oft kostenpflichtig und ungenau",
+  "Nachträgliche Preiserhöhungen möglich",
+  "Montage durch wechselnde Subunternehmer",
+  "Eingeschränkte oder keine Garantie",
+  "Kein Förderservice – alles selbst organisieren",
+];
+
+const customerProjects = [
   {
-    name: "Michael & Sandra K.",
+    title: "Villa Bergstraße",
     location: "Erkelenz",
-    rating: 5,
-    text: "Von der Beratung bis zur Montage alles perfekt. Unsere neue Aluminium-Haustür sieht fantastisch aus und die Wärmedämmung ist spürbar besser.",
-    door: "Die Tür – All Inclusive",
+    type: "Aluminium Haustür",
+    description: "Moderne Aluminium-Haustür mit Seitenteil und Fingerprint",
   },
   {
-    name: "Thomas R.",
+    title: "Einfamilienhaus Stadtkern",
     location: "Mönchengladbach",
-    rating: 5,
-    text: "Der Konfigurator war super einfach zu bedienen. Das Team hat uns professionell beraten und die Tür wurde pünktlich geliefert.",
-    door: "Die Tür – Standard",
+    type: "Holz-Alu Haustür",
+    description: "Klassische Holz-Alu-Haustür mit Oberlicht in Eiche",
   },
   {
-    name: "Familie Weber",
+    title: "Neubau Am Stadtpark",
     location: "Düsseldorf",
-    rating: 5,
-    text: "Wir haben uns für die Groß Design Variante entschieden – ein absoluter Hingucker! Die Qualität der Verarbeitung überzeugt auf ganzer Linie.",
-    door: "Die Tür – Groß Design",
+    type: "Kunststoff Haustür",
+    description: "Energieeffiziente Kunststoff-Haustür mit RC3-Sicherheit",
+  },
+  {
+    title: "Reihenhaus Sonnenviertel",
+    location: "Aachen",
+    type: "Aluminium Haustür",
+    description: "Flächenbündige Alu-Haustür mit Smart-Home-Anbindung",
   },
 ];
 
 const processSteps = [
   {
-    step: 1,
-    title: "Konfigurieren",
-    description:
-      "Gestalte deine Traumtür online oder lass dich persönlich beraten.",
-    icon: Settings,
+    title: "Kostenlose Planung deiner Haustür",
+    text: "Wir beraten dich individuell zu Material, Design und Sicherheitsausstattung – kostenlos und unverbindlich.",
   },
   {
-    step: 2,
-    title: "Aufmaß & Beratung",
-    description:
-      "Unser Fachberater kommt zu dir und nimmt professionell Maß.",
-    icon: ClipboardCheck,
+    title: "Vorbereitung des Bauvorhabens in max. 2 Wochen",
+    text: "Nach dem Aufmaß erstellen wir dein Angebot und bereiten alle Details für die Fertigung vor.",
   },
   {
-    step: 3,
-    title: "Fertigung",
-    description:
-      "Deine Haustür wird nach Maß gefertigt – präzise und in höchster Qualität.",
-    icon: Package,
+    title: "Wir kümmern uns um den Papierkram",
+    text: "Fördermittelanträge, Genehmigungen und Dokumentation – wir erledigen alles für dich.",
   },
   {
-    step: 4,
-    title: "Montage",
-    description:
-      "Fachgerechte Montage durch unser erfahrenes Montageteam vor Ort.",
-    icon: HardHat,
+    title: "Wir installieren deine Haustür innerhalb eines Tages",
+    text: "Unsere erfahrenen Monteure bauen deine neue Haustür fachgerecht ein – sauber und termingerecht.",
   },
-  {
-    step: 5,
-    title: "Nachbetreuung",
-    description:
-      "Wir sind auch nach der Montage für dich da – Service und Garantie inklusive.",
-    icon: HeartHandshake,
-  },
+];
+
+const components = [
+  { icon: Shield, label: "Aluminium", sub: "Premium & langlebig" },
+  { icon: Euro, label: "Kunststoff", sub: "Preis-Leistung" },
+  { icon: Sun, label: "Holz-Alu", sub: "Natürlich & modern" },
+  { icon: Fingerprint, label: "Smart Home", sub: "Zugang digital" },
 ];
 
 const faqs: FAQItem[] = [
   {
-    question: "Welches Material ist am besten für meine Haustür?",
+    question: "Wie groß sollte ich Seitenteile für meine Haustür einplanen?",
     answer:
-      "Die Wahl des Materials hängt von deinen Prioritäten ab. Aluminium bietet höchste Witterungsbeständigkeit und modernes Design. Kunststoff überzeugt durch ein gutes Preis-Leistungs-Verhältnis. Holz bietet natürliche Wärme und Behaglichkeit. Holz-Aluminium vereint die Vorteile beider Materialien. Unser Konfigurator hilft dir bei der Entscheidung.",
+      "Seitenteile sorgen für mehr Tageslicht im Eingangsbereich. Die Breite hängt von der Wandöffnung ab – üblich sind 30 bis 50 cm. Wir beraten dich bei der Planung und nehmen genaue Maße vor Ort.",
   },
   {
-    question: "Wie lange dauert die Lieferung meiner Haustür?",
+    question: "Brauche ich einen Speziellen für meine neue Haustür?",
     answer:
-      "Die Lieferzeit beträgt in der Regel 6-8 Wochen nach Auftragsbestätigung. Bei Standardmodellen kann es auch schneller gehen. Wir informieren dich nach der Bestellung über den genauen Liefertermin und halten dich während der gesamten Produktion auf dem Laufenden.",
+      "In der Regel brauchst du keine Baugenehmigung für den Austausch einer Haustür. Bei denkmalgeschützten Gebäuden kann es Auflagen geben. Wir klären das gerne für dich.",
   },
   {
-    question: "Welche Sicherheitsklasse empfehlt ihr?",
+    question: "Welche Haustür bietet die beste Wärmedämmung?",
     answer:
-      "Für Privathaushalte empfehlen wir mindestens die Widerstandsklasse RC2 nach DIN EN 1627. Diese bietet Schutz gegen den Einsatz von einfachen Werkzeugen. Für erhöhte Sicherheitsanforderungen bieten wir RC3 an. Alle unsere Türen sind serienmäßig mit Mehrfachverriegelung ausgestattet.",
+      "Aluminium-Haustüren mit thermisch getrennten Profilen erreichen UD-Werte ab 0,80 W/(m²·K). Holz-Alu-Varianten bieten ähnliche Werte mit natürlicher Optik. Kunststoff-Haustüren starten bei ca. 1,0 W/(m²·K).",
   },
   {
-    question: "Kann ich staatliche Förderung für meine neue Haustür erhalten?",
+    question: "Welches Material eignet sich für meine Haustür?",
     answer:
-      "Ja! Über die KfW und das BAFA kannst du Zuschüsse oder günstige Kredite für energieeffiziente Haustüren erhalten. Voraussetzung ist ein UD-Wert von maximal 1,3 W/(m²·K). Unsere Haustüren erfüllen in der Regel diese Anforderung. Wir beraten dich gerne zu den aktuellen Fördermöglichkeiten.",
+      "Aluminium ist die beliebteste Wahl: modern, langlebig und pflegeleicht. Kunststoff bietet das beste Preis-Leistungs-Verhältnis. Holz-Alu verbindet natürliche Wärme innen mit Wetterschutz außen.",
   },
   {
-    question: "Bietet ihr auch den Einbau / die Montage an?",
+    question: "Wie lange dauert die Produktion und Montage?",
     answer:
-      "Ja, wir bieten einen Komplettservice von der Beratung über das Aufmaß bis zur fachgerechten Montage. Unsere erfahrenen Monteure sorgen für eine professionelle Installation. Auf Wunsch entsorgen wir auch deine alte Tür und führen alle notwendigen Anpassungsarbeiten durch.",
+      "Die Fertigung dauert in der Regel 6–8 Wochen. Die Montage selbst ist bei Standardtüren in einem Tag erledigt. Wir halten dich während der gesamten Produktionszeit auf dem Laufenden.",
   },
   {
-    question: "Was kostet eine neue Haustür bei Planville?",
+    question: "Welche Sicherheitsklasse empfehlt ihr für Einfamilienhäuser?",
     answer:
-      "Die Kosten hängen von Material, Größe, Design und Ausstattung ab. Kunststoff-Haustüren beginnen bei ca. 800 €, Aluminium-Haustüren ab ca. 1.500 €. Nutze unseren Online-Konfigurator für eine erste Preisindikation oder fordere ein individuelles Angebot an.",
+      "Wir empfehlen mindestens RC2 nach DIN EN 1627. Für erhöhten Schutz bieten wir RC3 an. Alle Türen haben serienmäßig Mehrfachverriegelung und Sicherheitsbeschläge.",
   },
   {
-    question: "Welche Verglasung ist die richtige?",
+    question: "Gibt es 2026 eine Förderung für Haustüren?",
     answer:
-      "Wir empfehlen standardmäßig Dreifachverglasung für beste Wärme- und Schalldämmung. Für Glaselemente stehen verschiedene Optionen zur Verfügung: Klarglas, Ornamentglas, Milchglas und Sicherheitsglas. Seitenteile und Oberlichter können ebenfalls verglast werden.",
+      "Ja! Über das KfW-Programm und BAFA kannst du Zuschüsse für energieeffiziente Haustüren erhalten. Voraussetzung ist ein UD-Wert von max. 1,3 W/(m²·K). Wir helfen dir beim Antrag.",
   },
   {
-    question: "Kann ich meine Haustür mit Smart Home verbinden?",
+    question: "Kann ich meine Haustür auch ohne Montage bestellen?",
     answer:
-      "Ja! Wir bieten verschiedene Smart-Home-Lösungen: Fingerprint-Scanner, elektronische Türschlösser mit App-Steuerung, digitale Türspione und automatische Verriegelungssysteme. Diese lassen sich in bestehende Smart-Home-Systeme integrieren.",
+      "Ja, wir bieten auch Lieferung ohne Montage an. Wir empfehlen aber unseren Montageservice – so hast du Garantie auf die fachgerechte Installation und alle Dichtungen.",
+  },
+  {
+    question: "Ist es möglich, die Produktionsschritte zu verfolgen?",
+    answer:
+      "Ja! Über unser digitales Portal erhältst du Updates zum Fertigungsstatus. Du weißt jederzeit, wie weit deine Haustür ist und wann die Montage stattfindet.",
   },
 ];
 
-/* ─────────────── TAG COLORS ─────────────── */
-const tagColors: Record<string, string> = {
-  Einsteiger: "bg-gray-100 text-[#222B20]",
-  Bestseller: "bg-[#329866]/10 text-[#329866]",
-  Premium: "bg-[#FFA202]/10 text-[#E68F00]",
-  Exklusiv: "bg-[#222B20]/10 text-[#222B20]",
-  Modern: "bg-[#329866]/10 text-[#329866]",
-  Funktional: "bg-gray-100 text-[#222B20]",
-};
-
-/* ─────────────── HELPER COMPONENTS ─────────────── */
-function StarRating({ rating }: { rating: number }) {
+/* ─── HELPERS ─── */
+function StarRating({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: 5 }).map((_, i) => (
@@ -350,9 +229,7 @@ function StarRating({ rating }: { rating: number }) {
           key={i}
           size={16}
           className={
-            i < rating
-              ? "fill-[#329866] text-[#329866]"
-              : "text-gray-300"
+            i < count ? "fill-[#FFA202] text-[#FFA202]" : "text-[#E5E7EB]"
           }
         />
       ))}
@@ -361,889 +238,832 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 function FAQAccordion({ items }: { items: FAQItem[] }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [open, setOpen] = useState<number | null>(null);
   return (
     <div className="space-y-3">
       {items.map((item, i) => (
         <div
           key={i}
-          className="rounded-[16px] overflow-hidden bg-white shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] transition-all"
+          className="rounded-[16px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-[#E5E7EB]"
         >
           <button
-            onClick={() => setOpenIndex(openIndex === i ? null : i)}
-            className="w-full flex items-center justify-between p-6 text-left hover:bg-[#FAFAFA] transition-colors"
-            aria-expanded={openIndex === i}
+            onClick={() => setOpen(open === i ? null : i)}
+            className="w-full flex items-center justify-between p-5 text-left hover:bg-[#FAFAFA] transition-colors rounded-[16px]"
+            aria-expanded={open === i}
           >
-            <span className="font-semibold text-[#222B20] pr-4">
+            <span className="font-medium text-[#222B20] pr-4 text-[15px]">
               {item.question}
             </span>
             <ChevronDown
               size={20}
-              className={`text-[#6B7280] shrink-0 transition-transform duration-200 ${openIndex === i ? "rotate-180" : ""}`}
+              className={`text-[#329866] shrink-0 transition-transform duration-300 ${open === i ? "rotate-180" : ""}`}
             />
           </button>
-          {openIndex === i && (
-            <div className="px-6 pb-6 text-[#6B7280] leading-relaxed border-t border-[#E5E7EB] pt-4">
+          <div
+            className={`overflow-hidden transition-all duration-300 ${open === i ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
+          >
+            <div className="px-5 pb-5 text-[#6B7280] leading-relaxed text-[14px] border-t border-[#E5E7EB] pt-4">
               {item.answer}
             </div>
-          )}
+          </div>
         </div>
       ))}
     </div>
   );
 }
 
-/* ─────────────── PAGE ─────────────── */
+/* ════════════════════════════════════════════
+   PAGE — Planville Haustüren
+   (Exact clone of planville.de PV page structure)
+   ════════════════════════════════════════════ */
 export default function HaustuerenPage() {
+  const [mobileMenu, setMobileMenu] = useState(false);
+
   return (
     <div className="min-h-screen bg-white font-[family-name:var(--font-poppins)]">
-      {/* ── Navigation ── */}
-      <nav className="bg-white border-b border-[#E5E7EB] sticky top-0 z-50">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="flex items-center justify-between h-16">
-            <a href="/" className="text-2xl font-bold text-[#222B20]">
-              Plan<span className="text-[#329866]">ville</span>
+      {/* ═══════════════════════════════════════
+          1. HEADER — sticky nav
+          ═══════════════════════════════════════ */}
+      <header className="bg-white/95 backdrop-blur-sm border-b border-[#E5E7EB] sticky top-0 z-50">
+        <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between h-[72px]">
+          <a href="/" className="text-[26px] font-bold text-[#222B20] shrink-0">
+            Plan<span className="text-[#329866]">ville</span>
+          </a>
+
+          <nav className="hidden lg:flex items-center gap-8">
+            {[
+              "Haustüren",
+              "Fenster",
+              "Photovoltaik",
+              "Wärmepumpen",
+              "Dachsanierung",
+            ].map((link) => (
+              <a
+                key={link}
+                href="#"
+                className="text-[14px] font-medium text-[#6B7280] hover:text-[#329866] transition-colors"
+              >
+                {link}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-4">
+            <a
+              href="tel:+4924312345678"
+              className="hidden md:flex items-center gap-2 text-[14px] text-[#6B7280] hover:text-[#329866] transition-colors"
+            >
+              <Phone size={16} />
+              02431 / 123 456 78
             </a>
-            <div className="hidden md:flex items-center gap-8">
-              <a
-                href="#materialien"
-                className="text-[#6B7280] hover:text-[#329866] transition-colors text-sm font-medium"
-              >
-                Materialien
-              </a>
-              <a
-                href="#vorteile"
-                className="text-[#6B7280] hover:text-[#329866] transition-colors text-sm font-medium"
-              >
-                Vorteile
-              </a>
-              <a
-                href="#modelle"
-                className="text-[#6B7280] hover:text-[#329866] transition-colors text-sm font-medium"
-              >
-                Modelle
-              </a>
-              <a
-                href="#konfigurator"
-                className="text-[#6B7280] hover:text-[#329866] transition-colors text-sm font-medium"
-              >
-                Konfigurator
-              </a>
-              <a
-                href="#foerderung"
-                className="text-[#6B7280] hover:text-[#329866] transition-colors text-sm font-medium"
-              >
-                Förderung
-              </a>
-              <a
-                href="#faq"
-                className="text-[#6B7280] hover:text-[#329866] transition-colors text-sm font-medium"
-              >
-                FAQ
-              </a>
-            </div>
-            <div className="flex items-center gap-4">
-              <a
-                href="tel:+4924312345678"
-                className="hidden sm:flex items-center gap-2 text-sm text-[#6B7280] hover:text-[#329866]"
-              >
-                <Phone size={16} />
-                02431 / 123 456 78
-              </a>
-              <a
-                href="#konfigurator"
-                className="bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] px-6 py-2.5 rounded-full text-sm font-semibold transition-colors"
-              >
-                Jetzt konfigurieren
-              </a>
-            </div>
+            <a
+              href="#kontakt"
+              className="hidden sm:inline-flex bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] font-semibold text-[14px] px-6 py-2.5 rounded-full transition-colors"
+            >
+              Angebot anfordern
+            </a>
+            <button
+              onClick={() => setMobileMenu(!mobileMenu)}
+              className="lg:hidden p-2 text-[#222B20]"
+              aria-label="Menü"
+            >
+              {mobileMenu ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
-      </nav>
 
-      {/* ── 1. HERO SECTION ── */}
-      <section className="relative bg-[#222B20] text-white min-h-[600px] flex items-center overflow-hidden">
-        {/* Subtle pattern overlay */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(50,152,102,0.3),transparent_70%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(50,152,102,0.15),transparent_50%)]" />
-        </div>
-        <div className="max-w-[1200px] mx-auto px-6 py-20 sm:py-28 lg:py-32 relative w-full">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-[#329866]/20 border border-[#329866]/30 rounded-full px-4 py-1.5 mb-6">
-              <Sparkles size={14} className="text-[#329866]" />
-              <span className="text-sm text-[#329866]">
-                Jetzt Traumtür konfigurieren
-              </span>
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-[48px] lg:leading-[56px] font-bold leading-tight mb-6">
-              Deine Haustür –{" "}
-              <span className="text-[#329866]">
-                die Visitenkarte
-              </span>{" "}
-              deines Zuhauses
-            </h1>
-            <p className="text-base sm:text-lg text-[#E5E7EB] mb-8 leading-relaxed max-w-2xl">
-              Konfiguriere deine individuelle Haustür aus Aluminium,
-              Kunststoff oder Holz. Höchste Sicherheit, beste Wärmedämmung und
-              zeitloses Design – alles aus einer Hand von Planville.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="#konfigurator"
-                className="inline-flex items-center justify-center gap-2 bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] px-8 py-4 rounded-full text-base font-semibold transition-colors"
-              >
-                Haustür konfigurieren
-                <ArrowRight size={20} />
-              </a>
-              <a
-                href="#materialien"
-                className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-white hover:text-[#222B20] transition-colors"
-              >
-                Materialien vergleichen
-              </a>
-            </div>
-            <div className="flex flex-wrap gap-6 mt-10 pt-10 border-t border-white/15">
-              <div className="flex items-center gap-2">
-                <CheckCircle size={18} className="text-[#329866]" />
-                <span className="text-sm text-[#E5E7EB]">
-                  Kostenlose Beratung
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle size={18} className="text-[#329866]" />
-                <span className="text-sm text-[#E5E7EB]">Made in Germany</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle size={18} className="text-[#329866]" />
-                <span className="text-sm text-[#E5E7EB]">
-                  Fachgerechte Montage
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle size={18} className="text-[#329866]" />
-                <span className="text-sm text-[#E5E7EB]">
-                  KfW-förderfähig
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 2. TRUST BAR (dark section) ── */}
-      <section className="bg-[#222B20] border-t border-white/10">
-        <div className="max-w-[1200px] mx-auto px-6 py-5">
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 text-white/70">
-            <div className="flex items-center gap-2">
-              <BadgeCheck size={20} className="text-[#329866]" />
-              <span className="text-sm font-medium">CE-zertifiziert</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Shield size={20} className="text-[#329866]" />
-              <span className="text-sm font-medium">DIN EN 1627</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Award size={20} className="text-[#329866]" />
-              <span className="text-sm font-medium">RAL-Gütezeichen</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Thermometer size={20} className="text-[#329866]" />
-              <span className="text-sm font-medium">GEG-konform</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Home size={20} className="text-[#329866]" />
-              <span className="text-sm font-medium">Made in Germany</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 3. FEATURES / QUICK BENEFITS (white) ── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-[16px] shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all p-6 text-center">
-              <div className="w-12 h-12 bg-[#329866] rounded-[12px] flex items-center justify-center mx-auto mb-4">
-                <Palette size={24} className="text-white" />
-              </div>
-              <h3 className="text-lg font-semibold text-[#222B20] mb-2">
-                Volle Anpassung
-              </h3>
-              <p className="text-[#6B7280] text-sm leading-relaxed">
-                Konfiguriere Aluminium-, Kunststoff- und Holztüren exakt
-                nach deinen Wünschen – Farbe, Verglasung, Griffe und mehr.
-              </p>
-            </div>
-            <div className="bg-white rounded-[16px] shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all p-6 text-center">
-              <div className="w-12 h-12 bg-[#329866] rounded-[12px] flex items-center justify-center mx-auto mb-4">
-                <FileText size={24} className="text-white" />
-              </div>
-              <h3 className="text-lg font-semibold text-[#222B20] mb-2">
-                Sofort-Übersicht
-              </h3>
-              <p className="text-[#6B7280] text-sm leading-relaxed">
-                Erhalte eine detaillierte Zusammenfassung deiner gewählten
-                Konfiguration – transparent und übersichtlich.
-              </p>
-            </div>
-            <div className="bg-white rounded-[16px] shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all p-6 text-center">
-              <div className="w-12 h-12 bg-[#329866] rounded-[12px] flex items-center justify-center mx-auto mb-4">
-                <Mail size={24} className="text-white" />
-              </div>
-              <h3 className="text-lg font-semibold text-[#222B20] mb-2">
-                Direkte Angebotsanfrage
-              </h3>
-              <p className="text-[#6B7280] text-sm leading-relaxed">
-                Reiche deine Konfiguration direkt ein und erhalte ein
-                unverbindliches Angebot von Planville.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4. MATERIAL SELECTION (light bg) ── */}
-      <section id="materialien" className="py-20 bg-[#FAFAFA]">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-[36px] leading-[44px] font-semibold text-[#222B20] mb-4">
-              Welches Material passt zu dir?
-            </h2>
-            <p className="text-base text-[#6B7280] max-w-2xl mx-auto">
-              Jedes Material hat seine Stärken. Vergleiche die
-              Eigenschaften und finde die perfekte Haustür für dein Zuhause.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {materials.map((mat) => {
-              const Icon = mat.icon;
-              return (
-                <div
-                  key={mat.name}
-                  className="rounded-[16px] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all p-6"
+        {mobileMenu && (
+          <div className="lg:hidden border-t border-[#E5E7EB] bg-white animate-slide-in">
+            <div className="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-3">
+              {[
+                "Haustüren",
+                "Fenster",
+                "Photovoltaik",
+                "Wärmepumpen",
+                "Dachsanierung",
+              ].map((link) => (
+                <a
+                  key={link}
+                  href="#"
+                  className="text-[15px] font-medium text-[#222B20] py-2 border-b border-[#E5E7EB]"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 bg-[#329866]/10 rounded-full flex items-center justify-center">
-                      <Icon size={24} className="text-[#329866]" />
+                  {link}
+                </a>
+              ))}
+              <a
+                href="#kontakt"
+                className="bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] font-semibold text-[14px] px-6 py-3 rounded-full text-center transition-colors mt-2"
+              >
+                Angebot anfordern
+              </a>
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* ═══════════════════════════════════════
+          2. HERO — dark bg with house image overlay
+          ═══════════════════════════════════════ */}
+      <section className="relative min-h-[520px] flex items-center overflow-hidden">
+        {/* Background image simulation */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(160deg, #1a2318 0%, #222B20 40%, #1a3a25 70%, #222B20 100%)",
+          }}
+        />
+        {/* Subtle green glow top-right like PV page */}
+        <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-[#329866]/8 blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[300px] bg-[#329866]/5 blur-[100px]" />
+
+        <div className="relative max-w-[1200px] mx-auto px-6 py-20 lg:py-28 w-full text-center">
+          <h1 className="text-[32px] sm:text-[40px] lg:text-[48px] leading-[1.15] font-bold text-white mb-5">
+            Spare Geld mit Deiner
+            <br />
+            <span className="text-[#329866]">neuen Haustür</span>
+          </h1>
+
+          <p className="text-[15px] sm:text-[16px] text-white/70 leading-relaxed max-w-[520px] mx-auto mb-8">
+            Finde deine individuelle Haustür aus Aluminium, Kunststoff oder
+            Holz-Alu – mit höchster Sicherheit und bester Wärmedämmung. Von
+            der Planung bis zur Montage alles aus einer Hand.
+          </p>
+
+          <a
+            href="#konfigurator"
+            className="inline-flex items-center justify-center gap-2 bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] font-semibold px-8 py-4 rounded-full text-[16px] transition-colors"
+          >
+            Konfiguriert jetzt prüfen
+          </a>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          3. TRUST / AWARD SECTION
+          "Warum Planville — Deutschlands bestbewerteter Haustüren-Anbieter"
+          Google badge + product badges + 3 benefit cards
+          ═══════════════════════════════════════ */}
+      <section className="py-16 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6">
+          {/* Heading */}
+          <div className="text-center mb-10">
+            <p className="text-[#329866] font-semibold text-[15px] mb-2">
+              Warum Planville
+            </p>
+            <h2 className="text-[24px] sm:text-[32px] font-bold text-[#222B20] leading-tight">
+              Deutschlands bestbewerteter Haustüren-Anbieter
+            </h2>
+          </div>
+
+          {/* Google badge + product images row */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mb-12">
+            {/* Google Review Badge */}
+            <div className="flex flex-col items-center">
+              <div className="bg-white rounded-[16px] shadow-[0_2px_12px_rgba(0,0,0,0.08)] border border-[#E5E7EB] px-6 py-5 text-center">
+                <div className="text-[11px] font-bold text-[#222B20] tracking-wider uppercase mb-1">
+                  Ausgezeichnet
+                </div>
+                <div className="flex justify-center mb-1.5">
+                  <StarRating count={5} />
+                </div>
+                <div className="text-[12px] text-[#6B7280] mb-2">
+                  4,9 / 5,0 — 500+ Bewertungen
+                </div>
+                <div className="flex items-center justify-center gap-1.5">
+                  <div className="w-4 h-4 bg-[#4285F4] rounded-full flex items-center justify-center">
+                    <span className="text-white text-[8px] font-bold">G</span>
+                  </div>
+                  <span className="text-[12px] font-medium text-[#6B7280]">
+                    Google
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Product badges / certification icons */}
+            <div className="flex items-center gap-6">
+              {[
+                { icon: ShieldCheck, label: "DIN EN 1627" },
+                { icon: Award, label: "CE-zertifiziert" },
+                { icon: BadgeCheck, label: "Made in Germany" },
+              ].map((b) => {
+                const Icon = b.icon;
+                return (
+                  <div key={b.label} className="flex flex-col items-center gap-2">
+                    <div className="w-14 h-14 bg-[#F3F4F6] rounded-[12px] flex items-center justify-center">
+                      <Icon size={28} className="text-[#329866]" />
                     </div>
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#329866] text-white">
-                      {mat.badge}
+                    <span className="text-[11px] font-medium text-[#6B7280]">
+                      {b.label}
                     </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-[#222B20] mb-2">
-                    {mat.name}
-                  </h3>
-                  <p className="text-sm text-[#6B7280] mb-4 leading-relaxed">
-                    {mat.description}
-                  </p>
-                  <ul className="space-y-2 mb-4">
-                    {mat.features.map((f) => (
-                      <li
-                        key={f}
-                        className="flex items-center gap-2 text-sm text-[#222B20]"
-                      >
-                        <CheckCircle size={14} className="text-[#329866] shrink-0" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="pt-4 border-t border-[#E5E7EB]">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-[#6B7280]">UD-Wert</span>
-                      <span className="text-sm font-semibold text-[#329866]">
-                        {mat.ud}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* ── 5. USP / BENEFITS (white) ── */}
-      <section id="vorteile" className="py-20 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-[36px] leading-[44px] font-semibold text-[#222B20] mb-4">
-              Was deine neue Haustür auszeichnet
-            </h2>
-            <p className="text-base text-[#6B7280] max-w-2xl mx-auto">
-              Unsere Haustüren vereinen Sicherheit, Energieeffizienz, Design und
-              Komfort – für ein Zuhause, das du verdienst.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefits.map((b) => {
+          {/* 3 Benefit Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {trustBenefits.map((b) => {
               const Icon = b.icon;
               return (
                 <div
                   key={b.title}
-                  className="group bg-white rounded-[16px] shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all p-6"
+                  className="text-center px-6 py-8"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#329866] rounded-[12px] flex items-center justify-center shrink-0">
-                      <Icon size={24} className="text-white" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-3 mb-1">
-                        <h3 className="text-lg font-semibold text-[#222B20]">
-                          {b.title}
-                        </h3>
-                        <span className="text-xs font-semibold text-[#329866] bg-[#329866]/10 px-2 py-0.5 rounded-full">
-                          {b.stats}
+                  <div className="w-14 h-14 bg-[#329866]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon size={26} className="text-[#329866]" />
+                  </div>
+                  <div className="text-[20px] font-bold text-[#329866] mb-1">
+                    {b.value}
+                  </div>
+                  <h3 className="text-[16px] font-semibold text-[#222B20] mb-2">
+                    {b.title}
+                  </h3>
+                  <p className="text-[14px] text-[#6B7280] leading-relaxed">
+                    {b.text}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          4. GREEN MOTTO BAR — "Sicher. Zukunft. Bauen."
+          ═══════════════════════════════════════ */}
+      <section className="py-10 bg-[#329866]">
+        <div className="max-w-[1200px] mx-auto px-6 text-center">
+          <h2 className="text-[24px] sm:text-[32px] font-bold text-white mb-2">
+            Sicher. Zukunft. Bauen.
+          </h2>
+          <p className="text-[14px] sm:text-[15px] text-white/80 max-w-[480px] mx-auto">
+            Vertraue auf über 10 Jahre Erfahrung, um sich mit Planville sicher zu investieren.
+          </p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          5. "ALLES AUS EINER HAND" — image left, text right
+          ═══════════════════════════════════════ */}
+      <section className="py-20 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Image placeholder */}
+            <div className="flex-1 w-full">
+              <div className="aspect-[4/3] rounded-[16px] bg-gradient-to-br from-[#F3F4F6] to-[#E5E7EB] flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-[#329866]/5" />
+                <DoorOpen size={80} className="text-[#329866]/20 relative z-10" />
+              </div>
+            </div>
+            {/* Text side */}
+            <div className="flex-1">
+              <p className="text-[#329866] font-semibold text-[14px] mb-2">
+                Alles aus einer Hand:
+              </p>
+              <h2 className="text-[26px] sm:text-[34px] leading-[1.2] font-bold text-[#222B20] mb-4">
+                für ein sorgenfreies
+                <br />
+                Hausprojekt
+              </h2>
+              <p className="text-[15px] text-[#6B7280] leading-relaxed mb-6">
+                Mit Planville brauchst du dich um nichts zu kümmern. Von der
+                ersten Beratung über das professionelle Aufmaß bis zur
+                fachgerechten Montage – wir begleiten dich durch den gesamten
+                Prozess. Ein Ansprechpartner, ein Festpreis, kein Stress.
+              </p>
+              <p className="text-[15px] text-[#6B7280] leading-relaxed">
+                Unsere Haustüren werden nach deinen Wünschen in Deutschland
+                gefertigt und erfüllen höchste Standards bei Sicherheit,
+                Wärmedämmung und Design. Alles CE-zertifiziert und
+                GEG-konform.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          6. PHILOSOPHY — text left, image right
+          ═══════════════════════════════════════ */}
+      <section className="py-20 bg-[#FAFAFA]">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Text side */}
+            <div className="flex-1">
+              <p className="text-[#329866] font-semibold text-[14px] mb-2">
+                Unsere Philosophie:
+              </p>
+              <h2 className="text-[26px] sm:text-[34px] leading-[1.2] font-bold text-[#222B20] mb-4">
+                dein langfristiger Nutzen
+              </h2>
+              <p className="text-[15px] text-[#6B7280] leading-relaxed mb-4">
+                Wir bei Planville denken langfristig. Eine Haustür ist eine
+                Investition für Jahrzehnte. Deshalb beraten wir ehrlich, verwenden
+                nur hochwertige Materialien und sorgen für eine fachgerechte
+                Montage, die lange hält.
+              </p>
+              <p className="text-[15px] text-[#6B7280] leading-relaxed">
+                Nachhaltigkeit, Energieeffizienz und Sicherheit stehen dabei
+                im Mittelpunkt. Unsere Türen erfüllen die aktuellen
+                GEG-Anforderungen und sind förderfähig – damit du sparst und
+                gleichzeitig dein Zuhause aufwertest.
+              </p>
+            </div>
+            {/* Image placeholder */}
+            <div className="flex-1 w-full">
+              <div className="aspect-[4/3] rounded-[16px] bg-gradient-to-br from-[#329866]/10 to-[#329866]/5 flex items-center justify-center">
+                <Home size={80} className="text-[#329866]/20" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          7. WHY PLANVILLE — dark bg, 6 icon cards
+          ═══════════════════════════════════════ */}
+      <section className="py-20 bg-[#222B20]">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="text-center mb-14">
+            <p className="text-[#329866] font-semibold text-[15px] mb-2">
+              Warum Planville die
+            </p>
+            <h2 className="text-[26px] sm:text-[34px] font-bold text-white leading-tight">
+              beste Wahl für dich ist
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whyPlanville.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.title} className="text-center">
+                  <div className="w-14 h-14 bg-[#329866]/15 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon size={26} className="text-[#329866]" />
+                  </div>
+                  <h3 className="text-[16px] font-semibold text-white mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-[14px] text-white/60 leading-relaxed">
+                    {item.text}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          8. COMPARISON — "Dein Planville Service" vs "Ohne Planville"
+          ═══════════════════════════════════════ */}
+      <section className="py-20 bg-white">
+        <div className="max-w-[900px] mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* WITH Planville */}
+            <div className="rounded-[16px] border-2 border-[#329866] p-6 bg-white">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-[#329866] rounded-full flex items-center justify-center">
+                  <CheckCircle size={20} className="text-white" />
+                </div>
+                <h3 className="text-[18px] font-bold text-[#222B20]">
+                  Dein Planville Service
+                </h3>
+              </div>
+              <ul className="space-y-3.5">
+                {comparisonWith.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-[14px] text-[#222B20]"
+                  >
+                    <CheckCircle
+                      size={16}
+                      className="text-[#329866] shrink-0 mt-0.5"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* WITHOUT Planville */}
+            <div className="rounded-[16px] border border-[#E5E7EB] p-6 bg-[#FAFAFA]">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-[#E5E7EB] rounded-full flex items-center justify-center">
+                  <XCircle size={20} className="text-[#9CA3AF]" />
+                </div>
+                <h3 className="text-[18px] font-bold text-[#6B7280]">
+                  Ohne Planville
+                </h3>
+              </div>
+              <ul className="space-y-3.5">
+                {comparisonWithout.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-[14px] text-[#6B7280]"
+                  >
+                    <XCircle
+                      size={16}
+                      className="text-[#D1D5DB] shrink-0 mt-0.5"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          9. CUSTOMER PROJECTS — "Unsere Kundenprojekte"
+          ═══════════════════════════════════════ */}
+      <section className="py-20 bg-[#FAFAFA]">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <h2 className="text-[26px] sm:text-[34px] font-bold text-[#222B20] text-center mb-12">
+            Unsere Kundenprojekte
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {customerProjects.map((project) => (
+              <div
+                key={project.title}
+                className="rounded-[16px] overflow-hidden bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300"
+              >
+                {/* Image placeholder */}
+                <div className="aspect-[4/3] bg-gradient-to-br from-[#222B20] to-[#1a3a25] flex items-center justify-center relative">
+                  <DoorOpen size={48} className="text-[#329866]/30" />
+                  <div className="absolute top-3 left-3">
+                    <span className="text-[11px] font-semibold text-white bg-[#329866] px-2.5 py-1 rounded-full">
+                      {project.type}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="text-[15px] font-semibold text-[#222B20] mb-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-[12px] text-[#6B7280] flex items-center gap-1 mb-2">
+                    <MapPin size={11} />
+                    {project.location}
+                  </p>
+                  <p className="text-[13px] text-[#6B7280] leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          10. GREEN CTA — "Mach jetzt den 2-Minuten-Haustüren-Check!"
+          ═══════════════════════════════════════ */}
+      <section className="py-16 bg-[#222B20] relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#222B20] via-[#1a3a25] to-[#222B20]" />
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#329866]/10 blur-[100px]" />
+        <div className="relative max-w-[1200px] mx-auto px-6 text-center">
+          <h2 className="text-[24px] sm:text-[32px] font-bold text-white mb-3">
+            Mach jetzt den 2-Minuten-
+            <br />
+            Haustüren-Check!
+          </h2>
+          <a
+            href="#konfigurator"
+            className="inline-flex items-center justify-center gap-2 bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] font-semibold px-8 py-4 rounded-full text-[16px] transition-colors mt-4"
+          >
+            Jetzt konfigurieren
+            <ArrowRight size={18} />
+          </a>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          11. PROCESS TIMELINE — "Dein Ablauf mit Planville"
+          Image left, timeline steps right
+          ═══════════════════════════════════════ */}
+      <section id="konfigurator" className="py-20 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="text-center mb-14">
+            <p className="text-[#222B20] font-semibold text-[15px] mb-1">
+              Dein Ablauf
+            </p>
+            <h2 className="text-[26px] sm:text-[34px] font-bold leading-tight">
+              <span className="text-[#222B20]">mit </span>
+              <span className="text-[#329866]">Planville</span>
+            </h2>
+          </div>
+
+          <div className="flex flex-col lg:flex-row items-start gap-12">
+            {/* Image placeholder */}
+            <div className="flex-1 w-full lg:sticky lg:top-[100px]">
+              <div className="aspect-[3/4] rounded-[16px] bg-gradient-to-b from-[#F3F4F6] to-[#E5E7EB] flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-[#329866]/5" />
+                <DoorOpen
+                  size={100}
+                  className="text-[#329866]/15 relative z-10"
+                />
+              </div>
+            </div>
+
+            {/* Timeline steps */}
+            <div className="flex-1">
+              <div className="relative">
+                {/* Vertical line */}
+                <div className="absolute left-[19px] top-[28px] bottom-[28px] w-[2px] bg-[#329866]/20" />
+
+                <div className="space-y-10">
+                  {processSteps.map((step, i) => (
+                    <div key={i} className="flex gap-5 relative">
+                      {/* Number circle */}
+                      <div className="w-10 h-10 bg-[#329866] rounded-full flex items-center justify-center shrink-0 z-10">
+                        <span className="text-white font-bold text-[14px]">
+                          {i + 1}
                         </span>
                       </div>
-                      <p className="text-sm text-[#329866] font-medium mb-2">
-                        {b.subtitle}
-                      </p>
-                      <p className="text-sm text-[#6B7280] leading-relaxed">
-                        {b.description}
-                      </p>
+                      {/* Content */}
+                      <div className="pt-1.5">
+                        <h3 className="text-[16px] font-semibold text-[#222B20] mb-2">
+                          {step.title}
+                        </h3>
+                        <p className="text-[14px] text-[#6B7280] leading-relaxed">
+                          {step.text}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 6. PRODUCT / DOOR MODELS (light bg) ── */}
-      <section id="modelle" className="py-20 bg-[#FAFAFA]">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-[36px] leading-[44px] font-semibold text-[#222B20] mb-4">
-              Unsere Türmodelle
-            </h2>
-            <p className="text-base text-[#6B7280] max-w-2xl mx-auto">
-              Vom kompakten Einsteigermodell bis zur exklusiven Designtür –
-              finde die perfekte Haustür für deinen Eingangsbereich.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {doorModels.map((model) => (
-              <div
-                key={model.name}
-                className="bg-white rounded-[16px] shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all overflow-hidden group"
-              >
-                <div className="h-48 bg-[#FAFAFA] flex items-center justify-center relative">
-                  <DoorOpen
-                    size={64}
-                    className="text-[#E5E7EB] group-hover:text-[#329866] transition-colors"
-                  />
-                  <span
-                    className={`absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full ${tagColors[model.tag] || "bg-gray-100 text-[#222B20]"}`}
-                  >
-                    {model.tag}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold text-[#222B20] mb-1">
-                    {model.name}
-                  </h3>
-                  <p className="text-sm text-[#6B7280] mb-4">
-                    {model.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {model.features.map((f) => (
-                      <span
-                        key={f}
-                        className="text-xs bg-[#FAFAFA] text-[#6B7280] px-2.5 py-1 rounded-full border border-[#E5E7EB]"
-                      >
-                        {f}
-                      </span>
-                    ))}
-                  </div>
-                  <a
-                    href="#konfigurator"
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-[#329866] hover:text-[#2A7F55]"
-                  >
-                    Jetzt konfigurieren
-                    <ChevronRight size={16} />
-                  </a>
+                  ))}
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── 7. CONFIGURATOR PROMOTION (accent green bg) ── */}
-      <section id="konfigurator" className="py-20 bg-[#329866] text-white">
+      {/* ═══════════════════════════════════════
+          12. COMPONENTS — "Unsere Komponenten"
+          ═══════════════════════════════════════ */}
+      <section className="py-16 bg-[#FAFAFA]">
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-[36px] leading-[44px] font-bold mb-4">
-              So einfach konfigurierst du deine Traumtür
+          <div className="text-center mb-10">
+            <h2 className="text-[22px] sm:text-[28px] font-bold text-[#222B20]">
+              Unsere
             </h2>
-            <p className="text-base text-white/80 max-w-2xl mx-auto">
-              In nur 5 Schritten zu deiner individuellen Haustür – online
-              konfigurieren und unverbindliches Angebot erhalten.
-            </p>
+            <h2 className="text-[22px] sm:text-[28px] font-bold text-[#329866]">
+              Komponenten
+            </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
-            {configuratorSteps.map((s) => {
-              const Icon = s.icon;
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {components.map((c) => {
+              const Icon = c.icon;
               return (
-                <div key={s.step} className="text-center relative">
-                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-[16px] flex items-center justify-center mx-auto mb-4 border border-white/30">
-                    <Icon size={28} className="text-white" />
+                <div key={c.label} className="text-center">
+                  <div className="w-16 h-16 bg-white rounded-[16px] shadow-[0_2px_8px_rgba(0,0,0,0.06)] flex items-center justify-center mx-auto mb-3">
+                    <Icon size={32} className="text-[#222B20]" />
                   </div>
-                  <div className="text-xs font-bold text-white/60 mb-1 uppercase tracking-wide">
-                    Schritt {s.step}
-                  </div>
-                  <h3 className="text-base font-semibold mb-2">{s.title}</h3>
-                  <p className="text-sm text-white/80 leading-relaxed">
-                    {s.description}
-                  </p>
+                  <h3 className="text-[15px] font-semibold text-[#222B20]">
+                    {c.label}
+                  </h3>
+                  <p className="text-[12px] text-[#6B7280] mt-0.5">{c.sub}</p>
                 </div>
               );
             })}
           </div>
-          <div className="text-center">
-            <a
-              href="https://planville.de/haustueren/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] px-10 py-4 rounded-full text-base font-bold transition-colors shadow-lg"
-            >
-              Jetzt Haustür konfigurieren
-              <ArrowRight size={20} />
-            </a>
-            <p className="text-sm text-white/60 mt-4">
-              Kostenlos & unverbindlich – Angebot in 24 Stunden
-            </p>
-          </div>
         </div>
       </section>
 
-      {/* ── 8. SOCIAL PROOF / TESTIMONIALS (light bg) ── */}
-      <section className="py-20 bg-[#FAFAFA]">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-[36px] leading-[44px] font-semibold text-[#222B20] mb-4">
-              Das sagen unsere Kunden
-            </h2>
-            <p className="text-base text-[#6B7280]">
-              Über 500 zufriedene Kunden vertrauen auf Planville Haustüren.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="bg-white rounded-[16px] shadow-[0_1px_3px_rgba(0,0,0,0.1)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all p-6"
-              >
-                <StarRating rating={t.rating} />
-                <p className="text-[#6B7280] mt-4 mb-4 leading-relaxed text-sm">
-                  &ldquo;{t.text}&rdquo;
-                </p>
-                <div className="flex items-center justify-between border-t border-[#E5E7EB] pt-4">
-                  <div>
-                    <div className="font-semibold text-[#222B20] text-sm">
-                      {t.name}
-                    </div>
-                    <div className="text-xs text-[#6B7280] flex items-center gap-1">
-                      <MapPin size={12} /> {t.location}
-                    </div>
-                  </div>
-                  <div className="text-xs text-[#329866] font-medium bg-[#329866]/10 px-2 py-1 rounded-full">
-                    {t.door}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          {/* Stats bar (dark) */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center p-6 rounded-[16px] bg-[#222B20]">
-              <div className="text-3xl font-bold text-[#329866]">500+</div>
-              <div className="text-sm text-white/70 mt-1">
-                Zufriedene Kunden
-              </div>
-            </div>
-            <div className="text-center p-6 rounded-[16px] bg-[#222B20]">
-              <div className="text-3xl font-bold text-[#329866]">4.9/5</div>
-              <div className="text-sm text-white/70 mt-1">
-                Kundenbewertung
-              </div>
-            </div>
-            <div className="text-center p-6 rounded-[16px] bg-[#222B20]">
-              <div className="text-3xl font-bold text-[#329866]">10+</div>
-              <div className="text-sm text-white/70 mt-1">
-                Jahre Erfahrung
-              </div>
-            </div>
-            <div className="text-center p-6 rounded-[16px] bg-[#222B20]">
-              <div className="text-3xl font-bold text-[#329866]">100%</div>
-              <div className="text-sm text-white/70 mt-1">
-                Meisterbetrieb
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 9. FÖRDERUNG (white) ── */}
-      <section id="foerderung" className="py-20 bg-white">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* ═══════════════════════════════════════
+          13. DARK PRODUCT CTA
+          ═══════════════════════════════════════ */}
+      <section className="py-14 bg-[#222B20] relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1a3a25]/40 to-transparent" />
+        <div className="relative max-w-[1200px] mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
-              <div className="inline-flex items-center gap-2 bg-[#329866]/10 rounded-full px-4 py-1.5 mb-4">
-                <CircleDollarSign size={16} className="text-[#329866]" />
-                <span className="text-sm font-semibold text-[#329866]">
-                  Staatliche Förderung
-                </span>
-              </div>
-              <h2 className="text-[36px] leading-[44px] font-semibold text-[#222B20] mb-4">
-                Bis zu 20% Zuschuss für deine neue Haustür
+              <h2 className="text-[20px] sm:text-[26px] font-bold text-white leading-snug">
+                Möchten Sie mehr über die
+                <br />
+                von uns verwendeten
+                <br />
+                Produkte erfahren?
               </h2>
-              <p className="text-[#6B7280] mb-6 leading-relaxed">
-                Profitiere von staatlichen Förderprogrammen für
-                energieeffiziente Haustüren. Die KfW und das BAFA bezuschussen
-                den Einbau neuer Haustüren mit einem UD-Wert von max. 1,3
-                W/(m²·K).
-              </p>
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start gap-3">
-                  <CheckCircle
-                    size={20}
-                    className="text-[#329866] shrink-0 mt-0.5"
-                  />
-                  <div>
-                    <div className="font-semibold text-[#222B20]">
-                      KfW-Förderung (BEG EM)
-                    </div>
-                    <div className="text-sm text-[#6B7280]">
-                      Bis zu 20% Zuschuss oder zinsgünstiger Kredit für
-                      Einzelmaßnahmen
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle
-                    size={20}
-                    className="text-[#329866] shrink-0 mt-0.5"
-                  />
-                  <div>
-                    <div className="font-semibold text-[#222B20]">
-                      BAFA-Zuschuss
-                    </div>
-                    <div className="text-sm text-[#6B7280]">
-                      Förderfähig im Rahmen der Bundesförderung für effiziente
-                      Gebäude
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle
-                    size={20}
-                    className="text-[#329866] shrink-0 mt-0.5"
-                  />
-                  <div>
-                    <div className="font-semibold text-[#222B20]">
-                      Steuerliche Absetzung
-                    </div>
-                    <div className="text-sm text-[#6B7280]">
-                      Alternativ bis zu 20% der Kosten über 3 Jahre steuerlich
-                      absetzbar (§35c EStG)
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <a
-                href="#konfigurator"
-                className="inline-flex items-center gap-2 bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] px-8 py-3 rounded-full font-semibold transition-colors"
-              >
-                Förderfähige Tür konfigurieren
-                <ArrowRight size={18} />
-              </a>
             </div>
-            <div className="bg-white rounded-[16px] shadow-[0_1px_3px_rgba(0,0,0,0.1)] border border-[#E5E7EB] p-8">
-              <h3 className="text-xl font-semibold text-[#222B20] mb-6">
-                Fördervoraussetzungen
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-[#FAFAFA] rounded-[12px]">
-                  <span className="text-sm font-medium text-[#6B7280]">
-                    Max. UD-Wert Haustür
-                  </span>
-                  <span className="text-sm font-bold text-[#329866]">
-                    1,3 W/(m²·K)
-                  </span>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-[#FAFAFA] rounded-[12px]">
-                  <span className="text-sm font-medium text-[#6B7280]">
-                    Planville Haustüren
-                  </span>
-                  <span className="text-sm font-bold text-[#329866]">
-                    ab 0,80 W/(m²·K)
-                  </span>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-[#FAFAFA] rounded-[12px]">
-                  <span className="text-sm font-medium text-[#6B7280]">
-                    Max. Zuschuss
-                  </span>
-                  <span className="text-sm font-bold text-[#329866]">
-                    bis 20%
-                  </span>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-[#FAFAFA] rounded-[12px]">
-                  <span className="text-sm font-medium text-[#6B7280]">
-                    Energieberater nötig?
-                  </span>
-                  <span className="text-sm font-bold text-[#329866]">
-                    Wir beraten dich
-                  </span>
-                </div>
-              </div>
-              <div className="mt-6 p-4 bg-[#329866]/10 rounded-[12px] border border-[#329866]/20">
-                <div className="flex items-start gap-3">
-                  <HandHelping size={20} className="text-[#329866] shrink-0 mt-0.5" />
-                  <p className="text-sm text-[#222B20]">
-                    <span className="font-semibold">Planville hilft:</span> Wir
-                    unterstützen dich bei der Antragstellung und beraten dich zu
-                    den optimalen Fördermöglichkeiten.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <a
+              href="#kontakt"
+              className="inline-flex items-center gap-2 bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] font-semibold px-8 py-4 rounded-full text-[15px] transition-colors shrink-0"
+            >
+              Mehr erfahren
+              <ArrowRight size={16} />
+            </a>
           </div>
         </div>
       </section>
 
-      {/* ── 10. INSTALLATION PROCESS (light bg) ── */}
-      <section className="py-20 bg-[#FAFAFA]">
-        <div className="max-w-[1200px] mx-auto px-6">
+      {/* ═══════════════════════════════════════
+          14. FAQ SECTION — accordion + green CTA box
+          ═══════════════════════════════════════ */}
+      <section className="py-20 bg-white">
+        <div className="max-w-[760px] mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-[36px] leading-[44px] font-semibold text-[#222B20] mb-4">
-              Dein Weg zur neuen Haustür
+            <h2 className="text-[24px] sm:text-[32px] font-bold text-[#222B20]">
+              Häufige Fragen
             </h2>
-            <p className="text-base text-[#6B7280] max-w-2xl mx-auto">
-              Von der ersten Idee bis zur fertigen Montage – wir begleiten dich
-              durch den gesamten Prozess.
+            <p className="text-[24px] sm:text-[32px] font-bold text-[#329866]">
+              zu Haustüren
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-            {processSteps.map((s, idx) => {
-              const Icon = s.icon;
-              return (
-                <div key={s.step} className="relative text-center">
-                  {idx < processSteps.length - 1 && (
-                    <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-[2px] bg-[#329866]/20" />
-                  )}
-                  <div className="w-16 h-16 bg-[#329866]/10 rounded-[16px] flex items-center justify-center mx-auto mb-4 relative z-10">
-                    <Icon size={28} className="text-[#329866]" />
-                  </div>
-                  <div className="text-xs font-bold text-[#329866] mb-1 uppercase tracking-wide">
-                    Schritt {s.step}
-                  </div>
-                  <h3 className="text-base font-semibold text-[#222B20] mb-2">
-                    {s.title}
-                  </h3>
-                  <p className="text-sm text-[#6B7280] leading-relaxed">
-                    {s.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* ── 11. FAQ (white) ── */}
-      <section id="faq" className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-[36px] leading-[44px] font-semibold text-[#222B20] mb-4">
-              Häufig gestellte Fragen
-            </h2>
-            <p className="text-base text-[#6B7280]">
-              Finde Antworten auf die wichtigsten Fragen rund um Haustüren.
-            </p>
-          </div>
           <FAQAccordion items={faqs} />
-        </div>
-      </section>
 
-      {/* ── 12. FINAL CTA (dark) ── */}
-      <section className="py-20 bg-[#222B20] text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-[36px] leading-[44px] font-bold mb-4">
-            Bereit für deine neue Haustür?
-          </h2>
-          <p className="text-base text-white/70 mb-8 max-w-2xl mx-auto">
-            Starte jetzt mit der Konfiguration oder lass dich
-            persönlich beraten. Unser Team steht dir jederzeit zur Verfügung.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          {/* Green CTA box at bottom of FAQ */}
+          <div className="mt-10 rounded-[16px] bg-[#329866] p-8 text-center">
+            <p className="text-white font-semibold text-[16px] mb-1">
+              Hast du weitere Fragen?
+            </p>
+            <p className="text-white/80 text-[14px] mb-5">
+              Unser Team berät dich gerne persönlich und unverbindlich.
+            </p>
             <a
-              href="https://planville.de/haustueren/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] px-8 py-4 rounded-full text-base font-semibold transition-colors"
+              href="#kontakt"
+              className="inline-flex items-center gap-2 bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] font-semibold px-6 py-3 rounded-full text-[14px] transition-colors"
             >
-              Haustür konfigurieren
-              <ArrowRight size={20} />
+              Jetzt Beratung anfragen
+              <ArrowRight size={16} />
             </a>
-            <a
-              href="tel:+4924312345678"
-              className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-white hover:text-[#222B20] transition-colors"
-            >
-              <Phone size={20} />
-              Jetzt anrufen
-            </a>
-          </div>
-          <div className="flex flex-wrap gap-6 justify-center text-sm text-white/50">
-            <span className="flex items-center gap-2">
-              <CheckCircle size={16} className="text-[#329866]" /> Kostenlose
-              Beratung
-            </span>
-            <span className="flex items-center gap-2">
-              <CheckCircle size={16} className="text-[#329866]" />{" "}
-              Unverbindliches Angebot
-            </span>
-            <span className="flex items-center gap-2">
-              <CheckCircle size={16} className="text-[#329866]" /> Antwort in
-              24h
-            </span>
           </div>
         </div>
       </section>
 
-      {/* ── 13. NEWSLETTER (light bg) ── */}
-      <section className="py-12 bg-[#FAFAFA] border-t border-[#E5E7EB]">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <h3 className="text-xl font-semibold text-[#222B20] mb-2">
-            Immer informiert bleiben
+      {/* ═══════════════════════════════════════
+          15. NEWSLETTER — dark bg
+          ═══════════════════════════════════════ */}
+      <section
+        id="kontakt"
+        className="py-16 relative overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(160deg, #222B20 0%, #1a3a25 50%, #222B20 100%)",
+        }}
+      >
+        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-[#329866]/8 blur-[100px]" />
+        <div className="relative max-w-[560px] mx-auto px-6 text-center">
+          <h3 className="text-[22px] sm:text-[26px] font-bold text-white mb-2">
+            Melde dich für unseren
+            <br />
+            Newsletter an!
           </h3>
-          <p className="text-sm text-[#6B7280] mb-6">
-            Erhalte Neuigkeiten, Angebote und Tipps rund um Haustüren und
-            Renovierung.
+          <p className="text-[14px] text-white/60 mb-6">
+            Erhalte exklusive Angebote, Tipps zu Fördermitteln und Inspiration für dein Zuhause.
           </p>
-          <div className="flex gap-3 max-w-md mx-auto">
+          <div className="flex gap-3">
             <input
               type="email"
               placeholder="Deine E-Mail-Adresse"
-              className="flex-1 px-4 py-3 rounded-[12px] border border-[#E5E7EB] text-sm focus:outline-none focus:ring-2 focus:ring-[#329866]/30 focus:border-[#329866] text-[#222B20]"
+              className="flex-1 px-4 py-3.5 rounded-full bg-white/10 border border-white/20 text-[14px] text-white placeholder-white/40 focus:outline-none focus:border-[#329866] focus:ring-2 focus:ring-[#329866]/30 transition-colors"
             />
-            <button className="bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] px-6 py-3 rounded-full text-sm font-semibold transition-colors whitespace-nowrap">
+            <button className="bg-[#FFA202] hover:bg-[#E68F00] text-[#222B20] font-semibold px-6 py-3.5 rounded-full text-[14px] transition-colors whitespace-nowrap">
               Anmelden
             </button>
           </div>
         </div>
       </section>
 
-      {/* ── 14. FOOTER (dark) ── */}
-      <footer className="bg-[#222B20] text-white/60 py-12">
+      {/* ═══════════════════════════════════════
+          16. FOOTER — 4-column dark bg + trust badges
+          ═══════════════════════════════════════ */}
+      <footer className="bg-[#222B20] text-white/60 pt-14 pb-8">
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+            {/* Col 1 — Brand */}
             <div>
-              <div className="text-xl font-bold text-white mb-4">
+              <div className="text-[22px] font-bold text-white mb-4">
                 Plan<span className="text-[#329866]">ville</span>
               </div>
-              <p className="text-sm leading-relaxed mb-4">
+              <p className="text-[14px] leading-relaxed mb-4">
                 Dein Partner für hochwertige Haustüren, Fenster und
                 Energielösungen in Erkelenz und Umgebung.
               </p>
-              <div className="flex items-center gap-2 text-sm">
-                <MapPin size={14} />
+              <div className="text-[13px] flex items-center gap-2">
+                <MapPin size={13} className="text-[#329866]" />
                 Erkelenz, NRW
               </div>
             </div>
+
+            {/* Col 2 — Produkte */}
             <div>
-              <h4 className="text-white font-semibold mb-4">Produkte</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#" className="hover:text-[#329866] transition-colors">
-                    Haustüren
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-[#329866] transition-colors">
-                    Fenster
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-[#329866] transition-colors">
-                    Photovoltaik
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-[#329866] transition-colors">
-                    Wärmepumpen
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-[#329866] transition-colors">
-                    Dachsanierung
-                  </a>
-                </li>
+              <h4 className="text-white font-semibold text-[15px] mb-4">
+                Für alle Hauseigentümer
+              </h4>
+              <ul className="space-y-2.5 text-[14px]">
+                {[
+                  "Haustüren",
+                  "Fenster",
+                  "Photovoltaik",
+                  "Wärmepumpen",
+                  "Dachsanierung",
+                ].map((l) => (
+                  <li key={l}>
+                    <a
+                      href="#"
+                      className="hover:text-[#329866] transition-colors"
+                    >
+                      {l}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
+
+            {/* Col 3 — Über uns */}
             <div>
-              <h4 className="text-white font-semibold mb-4">Service</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#" className="hover:text-[#329866] transition-colors">
-                    Konfigurator
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-[#329866] transition-colors">
-                    Förderberatung
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-[#329866] transition-colors">
-                    Aufmaß-Service
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-[#329866] transition-colors">
-                    Montage
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-[#329866] transition-colors">
-                    Kontakt
-                  </a>
-                </li>
+              <h4 className="text-white font-semibold text-[15px] mb-4">
+                Über uns
+              </h4>
+              <ul className="space-y-2.5 text-[14px]">
+                {[
+                  "Über Planville",
+                  "Karriere",
+                  "Blog",
+                  "Partnerprogramm",
+                  "Kontakt",
+                ].map((l) => (
+                  <li key={l}>
+                    <a
+                      href="#"
+                      className="hover:text-[#329866] transition-colors"
+                    >
+                      {l}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
+
+            {/* Col 4 — Kontakt */}
             <div>
-              <h4 className="text-white font-semibold mb-4">Kontakt</h4>
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-center gap-2">
+              <h4 className="text-white font-semibold text-[15px] mb-4">
+                Kontakt
+              </h4>
+              <ul className="space-y-3 text-[14px]">
+                <li className="flex items-center gap-2.5">
                   <Phone size={14} className="text-[#329866]" />
                   02431 / 123 456 78
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center gap-2.5">
                   <Mail size={14} className="text-[#329866]" />
                   info@planville.de
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="flex items-center gap-2.5">
                   <Clock size={14} className="text-[#329866]" />
-                  Mo-Fr: 08:00 – 18:00
+                  Mo–Fr: 08:00 – 16:00
                 </li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="text-sm">
+
+          {/* Trust badges row */}
+          <div className="border-t border-white/10 pt-6 mb-6">
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              {["MAXDA", "Trusted Shops", "TÜV Rheinland", "SSL Secured", "Google Partner"].map(
+                (badge) => (
+                  <span
+                    key={badge}
+                    className="text-[11px] font-medium text-white/30 bg-white/5 px-3 py-1.5 rounded-[8px] border border-white/10"
+                  >
+                    {badge}
+                  </span>
+                )
+              )}
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-[13px]">
+            <span>
               &copy; {new Date().getFullYear()} Planville. Alle Rechte
               vorbehalten.
-            </div>
-            <div className="flex gap-6 text-sm">
-              <a href="#" className="hover:text-[#329866] transition-colors">
+            </span>
+            <div className="flex gap-6">
+              <a
+                href="#"
+                className="hover:text-[#329866] transition-colors"
+              >
                 Impressum
               </a>
-              <a href="#" className="hover:text-[#329866] transition-colors">
+              <a
+                href="#"
+                className="hover:text-[#329866] transition-colors"
+              >
                 Datenschutz
               </a>
-              <a href="#" className="hover:text-[#329866] transition-colors">
+              <a
+                href="#"
+                className="hover:text-[#329866] transition-colors"
+              >
                 AGB
               </a>
             </div>
